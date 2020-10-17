@@ -2,9 +2,12 @@ package com.rpc.core.config;
 
 import com.core.common.enums.ErrorCode;
 import com.core.common.exception.RpcException;
+import com.rpc.core.cluser.Cluster;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ClassUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -49,6 +52,8 @@ public class RefererConfig<T> extends AbstractConfig {
             throw new RpcException("ReferereConfig initRef is Error: Class not fund " + interfaceClass.getName(), e, ErrorCode.FRAMEWORK_INIT_ERROR);
         }
         checkInterface(interfaceClass);
+        List<Cluster<T>> clusterList = new ArrayList<>();
+
         String proxy = null;
     }
 

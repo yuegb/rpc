@@ -30,6 +30,10 @@ public class RpcException extends RuntimeException {
         this.errorMsg = message;
     }
 
+    public RpcException(String message, Throwable cause) {
+        this(message, cause, ErrorCode.SERVICE_DEFAULT_ERROR);
+    }
+
     public RpcException(String message, Throwable cause, ErrorCode errorCode) {
         super(message, cause);
         this.errorCode = errorCode;
