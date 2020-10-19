@@ -1,6 +1,7 @@
 package com.rpc.core.rpc;
 
 import com.core.common.enums.RpcConstants;
+import com.core.common.enums.URLParamType;
 import com.core.common.exception.RpcException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -106,6 +107,42 @@ public class URL {
         if (path != null && path.endsWith(RpcConstants.ASYNC_SUFFIX)) {
             return path.substring(0, path.length() - RpcConstants.ASYNC_SUFFIX.length());
         }
+        return path;
+    }
+
+    public String getParameter(String name, String defaultValue) {
+        String value = getParameter(name);
+        if (value == null) {
+            return defaultValue;
+        }
+        return value;
+    }
+
+    private String getParameter(String name) {
+        return parameters.get(name);
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public String getGroup() {
+        return getParameter(URLParamType.group.getName(), URLParamType.group.getValue());
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String toSimpleString() {
+        return getUri() + "?group=" + getGroup();
+    }
+    public String getUri() {
+        return protocol + RpcConstants.PROTOCOL_SEPARATOR + host + ":" + port +
+                RpcConstants.PATH_SEPARATOR + path;
+    }
+
+    public String getPath() {
         return path;
     }
 }

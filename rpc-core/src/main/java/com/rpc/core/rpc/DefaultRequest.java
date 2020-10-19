@@ -124,4 +124,8 @@ public class DefaultRequest implements Request, Traceable, Serializable {
     public String toString() {
         return interfaceName + "." + methodName + "(" + paramtersDesc + ") requestId=" + requestId;
     }
+
+    public void setAttachments(Map<String, String> attachments) {
+        this.attachments = attachments;
+    }
 }

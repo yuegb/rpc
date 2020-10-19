@@ -40,4 +40,7 @@ public @interface Referer {
 
     // 直连地址
     String directUrl() default "";
+
+    // 是否抛出异常
+    boolean throwException() default false;
 }
