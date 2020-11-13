@@ -1,2 +1,0 @@
-com.rpc.core.serialize.FastJsonSerialization
-com.rpc.core.serialize.Hessian2Serialization
